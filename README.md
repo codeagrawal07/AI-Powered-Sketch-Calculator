@@ -6,15 +6,15 @@ The AI-Powered Sketch Calculator is an innovative web application that transform
 
 ## Features
 
-- Interactive Drawing Canvas: A fully-featured canvas with multiple colors, an eraser, and adjustable brush sizes.
+- **Interactive Drawing Canvas:** A fully-featured canvas with multiple colors, an eraser, and adjustable brush sizes.
 
-- Multimodal AI Analysis: Submits both your drawing and an optional text prompt for more specific and accurate AI responses.
+- **Multimodal AI Analysis:** Submits both your drawing and an optional text prompt for more specific and accurate AI responses.
 
-- Mathematical Equation Solving: Automatically recognizes and solves handwritten mathematical problems, providing a step-by-    step solution.
+- **Mathematical Equation Solving:** Automatically recognizes and solves handwritten mathematical problems, providing a step-by-    step solution.
 
-- Object & Scene Recognition: Can identify and provide detailed descriptions for sketched objects, animals, and landscapes.
+- **Object & Scene Recognition:** Can identify and provide detailed descriptions for sketched objects, animals, and landscapes.
 
-- Real-Time Response: A dedicated side panel displays the AI's analysis moments after you submit your drawing.
+- **Real-Time Response:** A dedicated side panel displays the AI's analysis moments after you submit your drawing.
 
 # Tech Stack
 - Frontend:
