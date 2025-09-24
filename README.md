@@ -2,6 +2,8 @@
 
 The AI-Powered Sketch Calculator is an innovative web application that transforms a simple drawing canvas into an interactive, intelligent tool. It bridges the gap between human creativity and artificial intelligence by allowing users to get real-time analysis of their sketches. Whether you draw a complex math equation, a scenic landscape, or a simple object, the application's AI backend can understand your drawing, solve problems, and provide detailed descriptions.
 
+![](img/img.png)
+
 ## Features
 
 - Interactive Drawing Canvas: A fully-featured canvas with multiple colors, an eraser, and adjustable brush sizes.
@@ -27,7 +29,10 @@ The AI-Powered Sketch Calculator is an innovative web application that transform
   - Google Gemini 1.5 Flash
   - LangChain
 - Deployment:
-  - Vercel 
+  - Vercel
+#  
+![Working Flow Chat](img/flowChart.png)
+
 # How It Works: A Step-by-Step Guide
 The project seamlessly integrates a user-facing website (the frontend) with a powerful AI brain (the backend). Here’s the journey from a sketch to a solution:
 
