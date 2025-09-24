@@ -1,0 +1,6 @@
+Flask
+requests
+python-dotenv
+langchain-google-genai
+langchain
+langchain_core

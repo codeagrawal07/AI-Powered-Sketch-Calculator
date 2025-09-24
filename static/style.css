@@ -1,0 +1,162 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.controls {
+    width: 1000px; /* Spans the new total width of the panel and canvas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 2px solid black;
+    
+}
+
+/* --- THIS IS THE FIX --- */
+/* This rule ensures the panel and canvas are side-by-side. */
+.main-content {
+    display: flex;
+    flex-direction: row; /* Arranges children (panel and canvas) horizontally */
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* --- Styles for the Output Panel --- */
+#outputPanel,#userPrompt{
+    width: 300px;
+    height: 600px; /* Matches canvas height */
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(23, 232, 211, 0.851);
+    border: 1px solid #dcdfe6;
+}
+#userPrompt{
+    max-height: 535px;
+    max-width: 350px;
+    min-height: 535px;
+    min-width: 300px;
+}
+.panel-header {
+    padding: 12px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #dcdfe6;
+    background-color: #f8f9fa;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    text-align: center;
+}
+
+.panel-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.placeholder-text {
+    color: #999;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* --- Canvas and Other Styles --- */
+canvas {
+    border: 1px solid #dcdfe6;
+    background-color: white;
+    box-shadow: 0 4px 15px rgb(62, 65, 64);
+    border-radius: 12px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border: 1px solid black;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight:bolder;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    user-select: none;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+#clearBtn { background-color: #ff3b30; }
+#clearBtn:hover { background-color: #fd544a; }
+
+#generateBtn { background-color: #34c759; }
+#generateBtn:hover { background-color: #218838; }
+
+#analyzeBtn { background-color: #007aff; }
+#analyzeBtn:hover { background-color: #0056b3; }
+
+.color-panel {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.color-swatch {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.active {
+    border-color: #007aff;
+    transform: scale(1.1);
+}
+
+.color-swatch.eraser {
+    border: 2px dashed #ccc;
+}
+
+.color-swatch.eraser.active {
+    border: 3px solid #007aff;
+}
+
+.select-box {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d6;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+    outline: none;
+}
+
+.select-box:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}

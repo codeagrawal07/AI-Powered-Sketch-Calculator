@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Canvas</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls">
+            <button id="clearBtn" class="btn">Clear</button>
+            <div class="color-panel">
+                <div class="color-swatch active" style="background-color: rgb(8, 7, 7);" data-color="black" data-mode="pen"></div>
+                <div class="color-swatch" style="background-color: red;" data-color="red" data-mode="pen"></div>
+                <div class="color-swatch" style="background-color: blue;" data-color="blue" data-mode="pen"></div>
+                <div class="color-swatch" style="background-color: green;" data-color="green" data-mode="pen"></div>
+                <div class="color-swatch" style="background-color: #ffeb3b;" data-color="yellow" data-mode="pen"></div>
+                <div class="color-swatch" style="background-color: #c64307fc;" data-color="brown" data-mode="pen"></div>
+                <div class="color-swatch eraser" style="background-color:rgb(255, 255, 255);" data-color="white" data-mode="eraser"></div> 
+                <select id="brushSize" class="select-box">
+                    <option value="5">Small</option>
+                    <option value="10">Medium</option>
+                    <option value="20">Large</option>
+                    <option value="30">X-Large</option>
+                </select>
+            </div>
+            
+            <button id="generateBtn" class="btn">Download</button>
+            <button id="analyzeBtn" class="btn">Analyze with AI</button>
+        </div>
+        <div class="main-content">
+            <div id="outputPanel">
+                <div class="panel-header">AI Response</div>
+                <div id="outputText" class="panel-body">
+                    <p class="placeholder-text">Your drawing analysis will appear here...</p>
+                </div>
+            </div>
+        <canvas id="drawingCanvas"></canvas>
+        <div id="outputText">
+                <div class="panel-header">User Prompt or Query</div>
+                <div id="" class="panel-body">
+                <textarea id="userPrompt" style="font-weight: bold;font-size:larger;" placeholder="You can add your additional text...."></textarea>    
+            </div>
+        </div>
+    </div>
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
