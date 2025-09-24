@@ -50,3 +50,11 @@ This is where the magic happens. The Python server uses a specialized library ca
 
 ## 5. Displaying the Result
 Once the AI has generated a response, it sends the text back to the Python server. The server then relays this answer back to your browser. The JavaScript on the frontend receives the AI's response and instantly displays it in the dedicated "AI Response" panel, completing the cycle from sketch to intelligent answer in just a few seconds.
+
+Feel free to contribute, report issues, or request features.
+
+---
+## 🙋‍♂️ Author
+- Abhishek Agarwal
+- 🌐 LinkedIn https://www.linkedin.com/in/abhishek07122002/
+  
