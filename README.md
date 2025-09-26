@@ -56,5 +56,6 @@ Feel free to contribute, report issues, or request features.
 ---
 ## 🙋‍♂️ Author
 - Abhishek Agarwal
-- 🌐 LinkedIn https://www.linkedin.com/in/abhishek07122002/
+- 🌐 Linkedin post
+https://www.linkedin.com/posts/abhishek07122002_genai-fullstackdeveloper-python-activity-7375340498150023168-vbZk?utm_source=share&utm_medium=member_android&rcm=ACoAAD3IOGYBlddRJWwpnQGTIV12nKIAXg_yi9k
   
