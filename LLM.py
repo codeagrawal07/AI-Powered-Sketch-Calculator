@@ -1,62 +1,73 @@
-import base64
+import os
 import io
 from PIL import Image
+from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
+
 def process_image_with_llm(pil_image: Image.Image, user_prompt: str):
-    """
-    Analyzes an image using the Gemini 1.5 Flash model with a structured prompt.
-
-    Args:
-        pil_image: A Pillow Image object received from the Flask app.
-
-    Returns:
-        A string containing the AI's analysis of the image.
-    """
     try:
-        # 1. Initialize the Google Generative AI model
-        # LangChain will automatically use the GOOGLE_API_KEY from your .env file
-        llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash")
+        api_key = os.getenv("GOOGLE_API_KEY")
+      
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY is missing from .env")
 
-        # 2. Convert the Pillow Image object back to bytes, then to Base64
-        # This is the format the API expects
-        buffered = io.BytesIO()
-        pil_image.save(buffered, format="PNG")
-        img_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+        # Convert image to PNG bytes
+        buffer = io.BytesIO()
+        pil_image.convert("RGB").save(buffer, format="PNG")
+        image_bytes = buffer.getvalue()
 
-        base_prompt = """You are a multimodal AI expert. Your primary task is to analyze the provided image
-                         based on the user's specific request. If the request is generic, infer the user's intent.
-                         - For math, solve it.
-                         - For scenes, describe them.
-                         - For objects, identify them."""
-        # 3. Construct the multimodal message for the LLM
-        # This message contains both text instructions and the image data
+        print("Image received:", pil_image.size)
+        print("Image bytes:", len(image_bytes))
+
+        # Use a Gemini model ID available to your API key.
+        model = ChatGoogleGenerativeAI(
+            model="gemini-3.8-flash",
+            google_api_key=api_key,
+            temperature=0
+        )
+
+        prompt = user_prompt.strip() if user_prompt else (
+           """You are a multimodal AI expert. Your primary task is to analyze the provided image
+                            based on the user's specific request. If the request is generic, infer the user's intent.
+                          - For math, solve it.
+                          - For scenes, describe them.
+                          - For objects, identify them."""
+        )
+
         message = HumanMessage(
-               content=[
+            content=[
                 {
                     "type": "text",
-                    # **CHANGE**: Combine the base instructions with the user's specific prompt
-                    "text": f"{base_prompt}\n\n**User's Request:** {user_prompt}",
+                    "text": (
+                        "Carefully inspect the supplied image. "
+                        "Read the handwriting, symbols, equations, "
+                        "and diagrams before answering.\n\n"
+                        f"User request: {prompt}"
+                    )
                 },
-    
                 {
                     "type": "image_url",
-                    "image_url": f"data:image/png;base64,{img_base64}"
-                },
+                    "image_url": (
+                        "data:image/png;base64,"
+                        + __import__("base64").b64encode(
+                            image_bytes
+                        ).decode("utf-8")
+                    )
+                }
             ]
         )
-        
-        # 4. Invoke the model with the structured message
-        response = llm.invoke([message])
-        
-        return response.content
+
+        response = model.invoke([message])
+     
+        if isinstance(response.content, str):
+            return response.content
+
+        return str(response.text) 
 
     except Exception as e:
-        # This will print the detailed technical error to your Python terminal
-        print(f"Error during LLM API call: {e}")
-        return "Sorry, I couldn't process the image."
+        print("Image analysis failed:", repr(e))
+        return f"Image analysis failed: {str(e)}"
