@@ -50,7 +50,7 @@ def handle_image():
     # Send the description back to the frontend in JSON format
     return jsonify({'description': description})
 
-# --- Run the App ---
 if __name__ == '__main__':
-    # Runs the server on http://127.0.0.1:5000
-    app.run(port=5000, debug=True)
+    
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
