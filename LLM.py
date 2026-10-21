@@ -21,7 +21,7 @@ def process_image_with_llm(pil_image: Image.Image, user_prompt: str):
     try:
         # 1. Initialize the Google Generative AI model
         # LangChain will automatically use the GOOGLE_API_KEY from your .env file
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+        llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash")
 
         # 2. Convert the Pillow Image object back to bytes, then to Base64
         # This is the format the API expects
