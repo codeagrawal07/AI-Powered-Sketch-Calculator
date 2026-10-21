@@ -116,11 +116,10 @@ document.querySelector('.color-swatch[data-color="black"]').classList.add('activ
  * @param {boolean} isLoading - If true, shows a loading state.
  */
 function writeToOutputPanel(text, isLoading = false) {
-    if (isLoading) {
-        outputText.innerHTML = `<p class="placeholder-text">${text}</p>`;
+     if (isLoading) {
+        outputText.textContent = text;
     } else {
-        // We set innerHTML directly to render any HTML from the AI (like lists or bold text)
-        outputText.innerHTML = text;
+        outputText.innerHTML = marked.parse(text);
     }
 }
 
@@ -149,7 +148,7 @@ analyzeBtn.addEventListener('click', async () => {
 
     try {
         // Send the image data to your Python server using the fetch API
-              const response = await fetch('http://127.0.0.1:5000/process-image', {
+              const response = await fetch('/process-image', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             // **CHANGE**: Add the prompt text to the request body
