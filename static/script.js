@@ -85,7 +85,7 @@ clearBtn.addEventListener('click', () => {
 
 // 4. Generate Button (Download Image)
 generateBtn.addEventListener('click', () => {
-    // === FIX FOR TRANSPARENT BACKGROUND ===
+   
     // 1. Create a temporary canvas in memory
     const tempCanvas = document.createElement('canvas');
     const tempCtx = tempCanvas.getContext('2d');
@@ -155,7 +155,7 @@ analyzeBtn.addEventListener('click', async () => {
             body: JSON.stringify({ 
                 image: imageDataURL,
                 prompt: promptText // Send the text along with the image
-            }),
+            })
         });
 
         if (!response.ok) {
