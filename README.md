@@ -29,7 +29,7 @@ The AI-Powered Sketch Calculator is an innovative web application that transform
   - Google Gemini 1.5 Flash
   - LangChain
 - Deployment:
-  - Vercel
+  - Render
 #  
 ![Working Flow Chat](img/flowChart.png)
 
